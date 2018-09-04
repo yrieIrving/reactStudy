@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var NotesList = React.createClass({
+        render: function() {
+          //  React.Children.count 返回children中的组件总数
+          console.log(React.Children.count(this.props.children)); //2
+          //React.Children.only 返回children中，仅有的子级，否则抛出异常，这里仅有的子级，only方法接受的参数只能是一个对象，不能是多个对象(数组)
+          // console.log(React.Children.only(this.props.children[0]));
+          // console.log(React.Children.only(this.props.children[1]));
+          // console.log( this.props.children);返回数组
+          return (
+            <ol>
+              {
+                //  React children 深入了解   是顶层API之一，为处理this.props.children这个封闭的结构提供了有用的工具。 this.props对象的属性与组件的属性一一对应，就是this.props.children属性，他表示组件的所有子节点
+                // React.Children.map(this.props.children, function (child) {
+                //   return <li>{child}</li>;
+                // })
+                //this.props.children.forEach 返回的不是对象
+
+                this.props.children.forEach(function(child){
+                  //  console.log(child)//遍历之后的数组
+                })
+              }
+            </ol>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <NotesList>
+          <span>hello 123</span>
+          <span>world qwe</span>
+        </NotesList>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+      var data = 123;
+
+      var MyTitle = React.createClass({
+        // React.PropTypes 返回的是一系列验证函数，用于确保接受的数据类似是否是有效的
+        propTypes: {
+          // React.PropTypes.string  字符串
+          // React.PropTypes.array   数组 
+          // React.PropTypes.func    函数
+          // React.PropTypes.bool    布尔值
+          // React.PropTypes.number  数字
+          // React.PropTypes.object  对象
+          // React.PropTypes.symbol  标识
+          title: React.PropTypes.string.isRequired,//检测title是不是字符串
+        },
+
+        render: function() {
+          return <h1> {this.props.title} </h1>;
+        }
+      });
+
+      ReactDOM.render(
+        <MyTitle title={data} />,
+        document.getElementById('example')
+      );
+
+    </script>
+  </body>
+</html>
+

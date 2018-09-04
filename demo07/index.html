@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+var MyComponent = React.createClass({
+  // 添加焦点
+  handleClick: function() {
+    this.refs.myTextInput.focus();
+  },
+  // 失去焦点
+  blurClick: function() {
+    this.refs.myTextInput.blur();
+  },
+  render: function() {
+    return (
+      <div>
+        //  ref的使用
+        <input type="text" ref="myTextInput" />
+        // onClick事件的写法
+        <input type="button" value="Focus the text input" onClick={this.handleClick} />
+
+        <input type="button"  value="1234567890" onClick={this.blurClick}  />
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <MyComponent />,
+  document.getElementById('example')
+);
+    </script>
+  </body>
+</html>
